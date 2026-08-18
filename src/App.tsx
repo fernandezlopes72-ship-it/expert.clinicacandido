@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { ThemeId, ThemeConfig } from './types';
 import { THEMES } from './data/landingData';
-import { ThemeSelector } from './components/ThemeSelector';
 import { HeroSection } from './components/HeroSection';
 import { AboutExpertSection } from './components/AboutExpertSection';
 import { GallerySection } from './components/GallerySection';
@@ -13,24 +10,14 @@ import { FaqSection } from './components/FaqSection';
 import { FinalCTASection } from './components/FinalCTASection';
 import { FooterSection } from './components/FooterSection';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
-import { ExportModal } from './components/ExportModal';
 
 export default function App() {
-  const [currentThemeId, setCurrentThemeId] = useState<ThemeId>('dark-gold');
-  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
-
-  const currentTheme: ThemeConfig = THEMES[currentThemeId] || THEMES['dark-gold'];
+  // Modelo escolhido: Dark Executive & Champagne Gold (Alta conversão, estética premium e autoridade)
+  const currentTheme = THEMES['dark-gold'];
 
   return (
-    <div className={`min-h-screen ${currentTheme.bgColor} ${currentTheme.textPrimary} transition-colors duration-500 flex flex-col selection:bg-emerald-500 selection:text-slate-950 font-sans`}>
-      {/* 4 Models Selector & Deployment Bar */}
-      <ThemeSelector
-        currentTheme={currentThemeId}
-        onSelectTheme={(id) => setCurrentThemeId(id)}
-        onOpenExportModal={() => setIsExportModalOpen(true)}
-      />
-
-      {/* Main Landing Page Flow (Mobile First, No Distractions) */}
+    <div className={`min-h-screen ${currentTheme.bgColor} ${currentTheme.textPrimary} flex flex-col selection:bg-emerald-500 selection:text-slate-950 font-sans`}>
+      {/* Main Landing Page Flow (Mobile First, Sem Menus, 100% Focada em Conversão) */}
       <main className="flex-1 w-full">
         {/* 1. HERO (Primeira Dobra com Foto Grande + Headline 1ª pessoa + CTA WhatsApp) */}
         <HeroSection theme={currentTheme} />
@@ -63,15 +50,8 @@ export default function App() {
       {/* 10. RODAPÉ SIMPLES & COMPLETO */}
       <FooterSection theme={currentTheme} />
 
-      {/* BOTÃO FLUTUANTE DO WHATSAPP (Mobile First) */}
+      {/* BOTÃO FLUTUANTE DO WHATSAPP (Mobile First com alerta Online) */}
       <FloatingWhatsApp />
-
-      {/* MODAL DE EXPORTAÇÃO / GUIA VERCEL & GITHUB */}
-      <ExportModal
-        currentTheme={currentTheme}
-        isOpen={isExportModalOpen}
-        onClose={() => setIsExportModalOpen(false)}
-      />
     </div>
   );
 }
