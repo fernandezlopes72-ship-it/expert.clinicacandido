@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Filipe K. Cândido - Clínica Cândido",
+  "description": "Landing page mobile-first de alta conversão focada em agendamento de consulta odontológica gratuita com Dr. Filipe K. Cândido em Canelinha/SC.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
